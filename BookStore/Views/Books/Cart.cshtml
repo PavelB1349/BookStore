@@ -1,0 +1,23 @@
+﻿@model IEnumerable<BookStore.Models.Book>
+
+<h1>Корзина</h1>
+
+<ul>
+    @if (Model.Any())
+    {
+        foreach (var book in Model)
+        {
+            <li>
+                @book.Title - @book.Author
+                ( $@book.Price )
+            </li>
+        }
+        <p>Общая стоимость: @(Model.Sum(b => b.Price))</p>
+    }
+    else
+    {
+        <p>Корзина пуста.</p>
+    }
+</ul>
+
+<a asp-action="Index">Продолжить покупки</a>
